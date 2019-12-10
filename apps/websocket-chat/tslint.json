@@ -1,0 +1,7 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "websocketChat", "camelCase"],
+    "component-selector": [true, "element", "websocket-chat", "kebab-case"]
+  }
+}
