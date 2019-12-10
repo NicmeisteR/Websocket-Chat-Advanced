@@ -1,4 +1,10 @@
 # WebsocketChat
+In this project I lerned how to:
+    - Built a full stack application using Angular and Nest
+    - Shared code between the frontend and the backend
+    - Created a UI library
+    - Used Nx dep graph capabilities to only retest and rebuild what is affected
+
 
 This project was generated using [Nx](https://nx.dev).
 
