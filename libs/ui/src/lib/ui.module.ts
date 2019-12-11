@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WebsocketChatComponent } from './websocket-chat/websocket-chat.component';
+import { WebsocketChatComponent } from './chat/chat.component';
 
 @NgModule({
   imports: [CommonModule],

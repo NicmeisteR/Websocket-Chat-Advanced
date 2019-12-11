@@ -252,7 +252,7 @@ bootstrap();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/nicolaas/Desktop/Websocket-Chat/websocket-chat/apps/api/src/main.ts */"./apps/api/src/main.ts");
+module.exports = __webpack_require__(/*! H:\Github\Websocket-Chat-Advanced\apps\api\src\main.ts */"./apps/api/src/main.ts");
 
 
 /***/ }),
