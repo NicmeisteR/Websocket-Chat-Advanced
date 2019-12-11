@@ -153,6 +153,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _app_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.controller */ "./apps/api/src/app/app.controller.ts");
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.service */ "./apps/api/src/app/app.service.ts");
+/* harmony import */ var _events_events_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../events/events.module */ "./apps/api/src/events/events.module.ts");
+
 
 
 
@@ -161,7 +163,7 @@ let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__["Module"])({
-        imports: [],
+        imports: [_events_events_module__WEBPACK_IMPORTED_MODULE_4__["EventsModule"]],
         controllers: [_app_controller__WEBPACK_IMPORTED_MODULE_2__["AppController"]],
         providers: [_app_service__WEBPACK_IMPORTED_MODULE_3__["AppService"]],
     })
@@ -208,6 +210,85 @@ AppService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./apps/api/src/events/events.gateway.ts":
+/*!***********************************************!*\
+  !*** ./apps/api/src/events/events.gateway.ts ***!
+  \***********************************************/
+/*! exports provided: EventsGateway */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventsGateway", function() { return EventsGateway; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "tslib");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _nestjs_websockets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nestjs/websockets */ "@nestjs/websockets");
+/* harmony import */ var _nestjs_websockets__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_websockets__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "rxjs");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(rxjs__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "rxjs/operators");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var ws__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ws */ "ws");
+/* harmony import */ var ws__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(ws__WEBPACK_IMPORTED_MODULE_4__);
+var _a, _b;
+
+
+
+
+
+let EventsGateway = class EventsGateway {
+    onEvent(client, data) {
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])([1, 2, 3]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(item => ({ event: 'events', data: item })));
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_nestjs_websockets__WEBPACK_IMPORTED_MODULE_1__["WebSocketServer"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", typeof (_a = typeof ws__WEBPACK_IMPORTED_MODULE_4__["Server"] !== "undefined" && ws__WEBPACK_IMPORTED_MODULE_4__["Server"]) === "function" ? _a : Object)
+], EventsGateway.prototype, "server", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_nestjs_websockets__WEBPACK_IMPORTED_MODULE_1__["SubscribeMessage"])('events'),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Function),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, Object]),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:returntype", typeof (_b = typeof rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"] !== "undefined" && rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"]) === "function" ? _b : Object)
+], EventsGateway.prototype, "onEvent", null);
+EventsGateway = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_nestjs_websockets__WEBPACK_IMPORTED_MODULE_1__["WebSocketGateway"])(8080)
+], EventsGateway);
+
+
+
+/***/ }),
+
+/***/ "./apps/api/src/events/events.module.ts":
+/*!**********************************************!*\
+  !*** ./apps/api/src/events/events.module.ts ***!
+  \**********************************************/
+/*! exports provided: EventsModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventsModule", function() { return EventsModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "tslib");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _events_gateway__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./events.gateway */ "./apps/api/src/events/events.gateway.ts");
+
+
+
+let EventsModule = class EventsModule {
+};
+EventsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__["Module"])({
+        providers: [_events_gateway__WEBPACK_IMPORTED_MODULE_2__["EventsGateway"]],
+    })
+], EventsModule);
+
+
+
+/***/ }),
+
 /***/ "./apps/api/src/main.ts":
 /*!******************************!*\
   !*** ./apps/api/src/main.ts ***!
@@ -221,7 +302,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 /* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./apps/api/src/app/app.module.ts");
+/* harmony import */ var _nestjs_platform_ws__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @nestjs/platform-ws */ "@nestjs/platform-ws");
+/* harmony import */ var _nestjs_platform_ws__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_nestjs_platform_ws__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/app.module */ "./apps/api/src/app/app.module.ts");
 /**
  * This is not a production server yet!
  * This is only a minimal backend to get started.
@@ -229,15 +312,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function bootstrap() {
     return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-        const app = yield _nestjs_core__WEBPACK_IMPORTED_MODULE_1__["NestFactory"].create(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"]);
-        const globalPrefix = 'api';
-        app.setGlobalPrefix(globalPrefix);
-        const port = process.env.port || 3333;
-        yield app.listen(port, () => {
-            console.log('Listening at http://localhost:' + port + '/' + globalPrefix);
-        });
+        const app = yield _nestjs_core__WEBPACK_IMPORTED_MODULE_1__["NestFactory"].create(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"]);
+        app.useWebSocketAdapter(new _nestjs_platform_ws__WEBPACK_IMPORTED_MODULE_2__["WsAdapter"](app));
+        yield app.listen(3000);
     });
 }
 bootstrap();
@@ -279,6 +359,50 @@ module.exports = require("@nestjs/core");
 
 /***/ }),
 
+/***/ "@nestjs/platform-ws":
+/*!**************************************!*\
+  !*** external "@nestjs/platform-ws" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@nestjs/platform-ws");
+
+/***/ }),
+
+/***/ "@nestjs/websockets":
+/*!*************************************!*\
+  !*** external "@nestjs/websockets" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@nestjs/websockets");
+
+/***/ }),
+
+/***/ "rxjs":
+/*!***********************!*\
+  !*** external "rxjs" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("rxjs");
+
+/***/ }),
+
+/***/ "rxjs/operators":
+/*!*********************************!*\
+  !*** external "rxjs/operators" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("rxjs/operators");
+
+/***/ }),
+
 /***/ "tslib":
 /*!************************!*\
   !*** external "tslib" ***!
@@ -287,6 +411,17 @@ module.exports = require("@nestjs/core");
 /***/ (function(module, exports) {
 
 module.exports = require("tslib");
+
+/***/ }),
+
+/***/ "ws":
+/*!*********************!*\
+  !*** external "ws" ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("ws");
 
 /***/ })
 
