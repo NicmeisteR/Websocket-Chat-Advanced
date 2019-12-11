@@ -238,6 +238,7 @@ var _a, _b;
 
 let EventsGateway = class EventsGateway {
     onEvent(client, data) {
+        console.log(Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])([1, 2, 3]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(item => ({ event: 'events', data: item }))));
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])([1, 2, 3]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(item => ({ event: 'events', data: item })));
     }
 };
@@ -316,8 +317,13 @@ __webpack_require__.r(__webpack_exports__);
 function bootstrap() {
     return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
         const app = yield _nestjs_core__WEBPACK_IMPORTED_MODULE_1__["NestFactory"].create(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"]);
+        const globalPrefix = 'api';
+        app.setGlobalPrefix(globalPrefix);
         app.useWebSocketAdapter(new _nestjs_platform_ws__WEBPACK_IMPORTED_MODULE_2__["WsAdapter"](app));
-        yield app.listen(3000);
+        const port = process.env.port || 3333;
+        yield app.listen(port, () => {
+            console.log('Listening at http://localhost:' + port + '/' + globalPrefix);
+        });
     });
 }
 bootstrap();

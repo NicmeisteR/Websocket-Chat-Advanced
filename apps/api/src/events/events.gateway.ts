@@ -15,6 +15,8 @@ import {
   
     @SubscribeMessage('events')
     onEvent(client: any, data: any): Observable<WsResponse<number>> {
+        console.log(from([1, 2, 3]).pipe(map(item => ({ event: 'events', data: item }))));
+        
       return from([1, 2, 3]).pipe(map(item => ({ event: 'events', data: item })));
     }
   }
